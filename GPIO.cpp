@@ -7,11 +7,11 @@
 
 #include "GPIO.hpp"
 
-GPIO::GPIO(GPIO_TypeDef* gpio, uint8_t pin, Mode mode){
-    setup(gpio, pin, mode);
+GPIO::GPIO(GPIO_TypeDef* gpio, uint8_t pin, PinMode pinMode){
+    setup(gpio, pin, pinMode);
 }
 
-void GPIO::setup(GPIO_TypeDef* gpio, uint8_t pin, Mode mode){
+void GPIO::setup(GPIO_TypeDef* gpio, uint8_t pin, PinMode pinMode){
     if(     gpio==GPIOA || gpio==GPIOB || gpio==GPIOC || gpio==GPIOD ||
             gpio==GPIOE || gpio==GPIOF || gpio==GPIOG || gpio==GPIOH){
         if(pin>0 || pin>15) return;
@@ -37,7 +37,7 @@ void GPIO::setup(GPIO_TypeDef* gpio, uint8_t pin, Mode mode){
 
     //pin mode configuration
 
-    switch(mode){
+    switch(pinMode){
         case ANALOG:
             break;
         default:

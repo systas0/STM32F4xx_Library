@@ -1,14 +1,5 @@
-/*
- * GPIO.hpp
- *
- *  Created on: Dec 3, 2019
- *      Author: Shibata
- */
-
-#ifndef GPIO_HPP_
-#define GPIO_HPP_
-
-#include "stm32f407xx.h"
+#pragma once
+#include "stm32f405xx.h"
 
 #define PA0     GPIOA,(uint8_t)0
 #define PA1     GPIOA,(uint8_t)1
@@ -177,7 +168,7 @@
 
 class GPIO{
 public:
-    enum Mode{
+    enum PinMode{
         ANALOG =        0x00,
         FLOATING =      0x01,
         INPUT_PU =      0x02,
@@ -188,8 +179,8 @@ public:
         ALTERNATE =     0x07
     };
     GPIO(void){};
-    GPIO(GPIO_TypeDef* gpio, uint8_t pin, Mode mode);
-    void setup(GPIO_TypeDef* gpio, uint8_t pin, Mode mode);
+    GPIO(GPIO_TypeDef* gpio, uint8_t pin, PinMode pinMode);
+    void setup(GPIO_TypeDef* gpio, uint8_t pin, PinMode pinMode);
     void setAlternate(uint8_t alternate);
     uint8_t read(void);
     void write(uint8_t value);
@@ -200,5 +191,3 @@ public:
 private:
 
 };
-
-#endif /* GPIO_HPP_ */
